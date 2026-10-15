@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andrei “Drei” Rubic | Real Estate Virtual Assistant</title>
+  <meta name="description" content="Detail-oriented Real Estate Virtual Assistant who builds systems and AI workflows, with experience in market research, lead calling, and scheduling.">
+  <meta name="theme-color" content="#25364a">
+  <link rel="canonical" href="https://dreirubic.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Andrei “Drei” Rubic | Real Estate Virtual Assistant">
+  <meta property="og:description" content="Detail-oriented Real Estate Virtual Assistant who builds systems and AI workflows, with experience in market research, lead calling, and scheduling.">
+  <meta property="og:url" content="https://dreirubic.github.io/">
+  <meta property="og:image" content="https://dreirubic.github.io/images/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://dreirubic.github.io/images/og-preview.jpg">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivory: #f8f7f2; --white: #ffffff; --navy: #25364a; --navy-deep: #1a2736;
+      --blue: #bfddf2; --yellow: #ffe6a3; --gold: #e8c85b; --mist: #d9e7e8;
+      --muted: #51647a; --on-navy: #d3e3ef; --stars: #d9b23f;
+      --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max: 1160px; --pad: clamp(20px, 5vw, 56px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { margin: 0; overflow-x: clip; background: var(--ivory); color: var(--navy); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; display: block; }
+    .split > *, .work-head > *, .hero-grid > * { min-width: 0; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; }
+    p { margin: 0 0 16px; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    svg.i { width: 1em; height: 1em; flex: none; }
+    .container { width: min(var(--max), calc(100% - 2 * var(--pad))); margin: 0 auto; }
+    .skip-link { position: absolute; left: -999px; top: 8px; z-index: 100; padding: 10px 14px; border-radius: 8px; background: var(--white); color: var(--navy); font-weight: 700; }
+    .skip-link:focus { left: 12px; }
+    :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+    .site-header :focus-visible, .hero :focus-visible, .band-navy :focus-visible, .site-footer :focus-visible { outline-color: var(--gold); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 26px; border: 1.5px solid transparent; border-radius: 999px; font: 600 14px/1 var(--sans); text-decoration: none; cursor: pointer; transition: transform .15s, background .15s, color .15s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-yellow { background: var(--yellow); color: var(--navy); }
+    .btn-yellow:hover { background: #ffdb7d; }
+    .btn-navy { background: var(--navy); color: var(--ivory); }
+    .btn-navy:hover { background: var(--navy-deep); }
+    .btn-outline { border-color: rgba(248, 247, 242, .6); color: var(--ivory); }
+    .btn-outline:hover { background: rgba(248, 247, 242, .12); }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--navy); color: var(--ivory); border-bottom: 1px solid rgba(191, 221, 242, .18); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 68px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-size: 25px; }
+    .brand img { width: 36px; height: 36px; border-radius: 9px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; font-weight: 500; }
+    .nav-links a { color: var(--on-navy); text-decoration: none; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links .nav-cta { padding: 10px 20px; border-radius: 999px; background: var(--yellow); color: var(--navy); font-weight: 600; }
+    .nav-links .nav-cta:hover { color: var(--navy); background: #ffdb7d; }
+    .menu-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(191, 221, 242, .4); border-radius: 12px; background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: var(--ivory); }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; background: var(--navy); color: var(--ivory); padding: clamp(48px, 8vw, 104px) 0 clamp(56px, 8vw, 96px); }
+    .hero::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: clamp(48px, 13vw, 190px); background: linear-gradient(90deg, #e8c85b 0 34%, #bfddf2 34% 67%, #d9e7e8 67% 100%); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr .7fr; gap: 48px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font: 700 12px/1.3 var(--sans); letter-spacing: .26em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; flex: none; width: 44px; height: 3px; background: var(--gold); }
+    .hero h1 { margin-bottom: 26px; font-size: clamp(60px, 10.5vw, 132px); line-height: .92; letter-spacing: -.02em; }
+    .hero-lead { max-width: 580px; margin-bottom: 18px; color: var(--on-navy); font-size: 18px; }
+    .tagline { margin-bottom: 30px; color: var(--gold); font-family: var(--serif); font-style: italic; font-size: clamp(24px, 3vw, 32px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .status { display: inline-flex; align-items: center; gap: 8px; margin: 26px 0 0; color: var(--on-navy); font-size: 13px; }
+    .status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #7fd39a; }
+    .portrait { position: relative; display: grid; place-items: center; justify-self: end; width: min(100%, 340px); aspect-ratio: 1; overflow: hidden; border-radius: 28px; background: var(--navy-deep); box-shadow: 14px 14px 0 var(--gold); }
+    .portrait span { color: var(--gold); font: 400 96px/1 var(--serif); }
+    .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+
+    /* Stats */
+    .stats { background: var(--blue); color: var(--navy); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 30px 22px; border-left: 1px solid rgba(37, 54, 74, .16); }
+    .stat:first-child { padding-left: 0; border-left: 0; }
+    .stat-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 12px; border-radius: 50%; background: var(--white); color: var(--navy); font-size: 22px; }
+    .stat strong { display: block; font: 400 clamp(38px, 5vw, 58px)/1 var(--serif); }
+    .stat span.l { color: var(--navy); font-size: 13px; font-weight: 500; }
+
+    /* Bands */
+    .band { padding: clamp(64px, 9vw, 120px) 0; }
+    .band-ivory { background: var(--ivory); }
+    .band-navy { background: var(--navy); color: var(--ivory); }
+    .band-blue { background: var(--blue); color: var(--navy); }
+    .band-yellow { background: var(--yellow); color: var(--navy); }
+    .split { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(28px, 6vw, 80px); align-items: start; }
+    .band h2 { font-size: clamp(46px, 7vw, 86px); line-height: .98; letter-spacing: -.015em; }
+    .kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--navy); font: 700 12px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; }
+    .kicker::before { content: ""; width: 22px; height: 4px; border-radius: 2px; background: var(--gold); }
+    .band-navy .kicker { color: var(--gold); }
+    .lead { font-size: 19px; }
+    .muted { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chips li { padding: 7px 14px; border: 1px solid var(--mist); border-radius: 999px; background: var(--white); color: var(--muted); font-size: 13px; font-weight: 500; }
+    .band-navy .chips li { border-color: rgba(191, 221, 242, .5); background: transparent; color: var(--blue); }
+
+    /* Services */
+    .service { padding: 0 0 26px; }
+    .service h3 { margin: 0 0 6px; font: 700 18px/1.3 var(--sans); }
+    .service p { margin: 0; color: var(--on-navy); }
+    .band-navy .btn { margin-top: 12px; }
+
+    /* Featured project */
+    .work-head { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(28px, 6vw, 80px); align-items: end; margin-bottom: 48px; }
+    .work-head p { margin: 0; max-width: 540px; font-size: 18px; }
+    .feature { display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; border: 1px solid var(--mist); border-radius: 28px; background: var(--white); }
+    .feature-media { display: flex; align-items: center; background: #fff3c9; }
+    .feature-media img { width: 100%; }
+    .feature-body { padding: clamp(24px, 4vw, 44px); }
+    .feature h3 { margin-bottom: 10px; font-size: clamp(36px, 4.4vw, 54px); line-height: 1.02; }
+    .role { margin: 0 0 16px; color: var(--muted); font-size: 15px; font-weight: 600; }
+    .feature-body ul { margin: 0 0 22px; padding-left: 18px; list-style: disc; color: var(--muted); }
+    .feature-body li { margin: 6px 0; }
+    .feature-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+    .pill { display: inline-block; padding: 7px 14px; border-radius: 999px; background: var(--blue); color: var(--navy); font: 700 11px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+
+    /* Experience */
+    .sticky { position: sticky; top: 100px; }
+    .job { display: grid; grid-template-columns: 150px 1fr; gap: 10px 28px; margin-bottom: 16px; padding: 26px; border: 1px solid var(--mist); border-radius: 20px; background: var(--white); }
+    .job-date { color: var(--muted); font: 700 12px/1.7 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+    .job h3 { margin-bottom: 4px; font-size: clamp(28px, 3.4vw, 38px); line-height: 1.05; }
+    .org { margin: 0 0 12px; color: var(--muted); font-size: 15px; font-weight: 600; }
+    .job ul { padding-left: 18px; list-style: disc; color: var(--muted); }
+    .job li { margin: 6px 0; }
+    .job a.inline { font-weight: 700; text-underline-offset: 3px; }
+    .tag { display: inline-block; margin-left: 10px; padding: 4px 10px; border-radius: 999px; background: var(--gold); color: var(--navy); font: 700 10px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; vertical-align: middle; }
+    .subhead { margin: 48px 0 20px; padding-top: 24px; border-top: 2px solid var(--navy); color: var(--navy); font: 700 12px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; }
+    .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .edu article { padding: 22px; border: 1px solid var(--mist); border-radius: 18px; background: var(--white); }
+    .edu h3 { margin-bottom: 8px; font-size: 26px; }
+    .edu p { margin: 0; color: var(--muted); font-size: 15px; }
+    .certs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0 0; }
+    .cert { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 12px; border: 1px solid var(--mist); border-radius: 16px; background: var(--white); text-decoration: none; transition: transform .15s, border-color .15s; }
+    .cert:hover { transform: translateY(-2px); border-color: var(--navy); }
+    .cert img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 10px; background: #fff; }
+    .cert span { color: var(--muted); font-size: 13px; font-weight: 600; text-align: center; overflow-wrap: anywhere; }
+    .cert-note { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* Reviews */
+    .carousel { position: relative; }
+    .track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 18px; scrollbar-width: thin; scrollbar-color: var(--navy) transparent; }
+    .review { flex: 0 0 min(360px, 84%); scroll-snap-align: start; margin: 0; padding: 28px 30px; border-radius: 22px; background: var(--white); color: var(--navy); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-height: 250px; }
+    .stars { display: flex; gap: 3px; color: var(--stars); font-size: 18px; }
+    .review blockquote { margin: 0; font: 400 clamp(24px, 2.6vw, 30px)/1.25 var(--serif); }
+    .review figcaption { color: var(--muted); font: 700 11px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+    .car-controls { display: flex; gap: 10px; margin-top: 8px; }
+    .car-btn { width: 48px; height: 48px; border: 1.5px solid var(--navy); border-radius: 50%; background: transparent; color: var(--navy); font-size: 20px; cursor: pointer; }
+    .car-btn:hover { background: rgba(37, 54, 74, .1); }
+
+    /* Sample work */
+    .work-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+    .work { grid-column: span 2; display: flex; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid var(--mist); border-radius: 22px; background: var(--white); }
+    .work.wide { grid-column: span 3; }
+    .work.flag { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px 48px; align-items: start; padding: 32px; }
+    .work h3 { margin: 0 0 8px; font: 700 20px/1.3 var(--sans); }
+    .work.flag h3 { font: 400 clamp(34px, 4.6vw, 54px)/1.02 var(--serif); margin-bottom: 12px; }
+    .work p { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+    .work.flag p { font-size: 17px; }
+    .flag-label { display: inline-block; margin: 0 0 12px; padding: 6px 13px; border-radius: 999px; background: var(--navy); color: var(--yellow); font: 700 10px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+    .pst { margin: 0 0 20px; display: grid; gap: 8px; width: 100%; }
+    .pst div { display: grid; grid-template-columns: 74px 1fr; gap: 10px; font-size: 13px; line-height: 1.5; }
+    .pst dt { padding-top: 2px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .pst dd { margin: 0; color: var(--muted); }
+    .work .btn { margin-top: auto; }
+    .note { margin: 32px 0 0; font-size: 13px; color: var(--navy); }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; margin-top: 56px; }
+    .skills-grid h3 { margin-bottom: 14px; font-size: 32px; }
+
+    /* Contact */
+    .contact-card { padding: 30px; border-radius: 24px; background: var(--white); color: var(--navy); }
+    .contact-card dl { display: grid; gap: 18px; margin: 0; }
+    .contact-card dt { margin-bottom: 2px; color: var(--muted); font: 700 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+    .contact-card dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+    .contact-card a { text-underline-offset: 3px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .band-blue .contact-copy { max-width: 520px; margin-top: 22px; font-size: 18px; }
+    .mail-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin-top: 8px; font-size: 13px; font-weight: 600; }
+    .mail-tools button { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    #copy-status { color: var(--muted); }
+    .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--mist); }
+    .soc { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: var(--ivory); font-size: 22px; text-decoration: none; transition: transform .15s, background .15s; }
+    .soc:hover { transform: translateY(-2px); background: var(--navy-deep); }
+
+    /* Footer */
+    .site-footer { background: var(--navy); color: var(--ivory); padding: 34px 0; font-size: 14px; }
+    .footer-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px; }
+    .footer-grid a { text-underline-offset: 3px; }
+    .footer-socials { display: flex; gap: 8px; }
+    .footer-socials .soc { width: 40px; height: 40px; font-size: 19px; background: rgba(191, 221, 242, .16); }
+    .footer-socials .soc:hover { background: rgba(191, 221, 242, .3); }
+    .copy { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(191, 221, 242, .2); color: var(--on-navy); font-size: 12px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .split, .work-head, .feature { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      .work, .work.wide { grid-column: span 1; }
+      .work.flag { grid-column: 1 / -1; grid-template-columns: 1fr; }
+      .portrait { justify-self: start; width: min(100%, 260px); margin: 8px 0 14px; }
+      .sticky { position: static; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+      .stat:nth-child(n+3) { border-top: 1px solid rgba(37, 54, 74, .16); }
+      .hero-grid { padding-right: calc(clamp(48px, 13vw, 190px) - var(--pad) + 16px); }
+    }
+    @media (max-width: 1020px) { .nav-links { gap: 14px; font-size: 13px; } }
+    @media (max-width: 900px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px var(--pad) 28px; background: var(--navy); border-bottom: 1px solid rgba(191, 221, 242, .18); font-size: 15px; }
+      .nav-links.open { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .job { grid-template-columns: 1fr; gap: 6px; padding: 22px; }
+      .edu, .skills-grid, .work-grid { grid-template-columns: 1fr; }
+      .work, .work.wide, .work.flag { grid-column: 1 / -1; }
+      .certs { gap: 8px; }
+      .cert { padding: 8px; gap: 6px; border-radius: 12px; }
+      .cert span { font-size: 11px; line-height: 1.3; }
+      .hero::after { width: 36px; }
+      .hero-grid { padding-right: calc(36px - var(--pad) + 16px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn, .soc, .cert { transition: none; }
+    }
+    @media print {
+      .site-header, .hero-actions, .contact-actions, .skip-link { display: none; }
+      .band, .hero { padding: 24px 0; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6 .9-4.4 4.2 1 6L12 17l-5.3 2.8 1-6-4.4-4.2 6-.9z" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7.5 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><circle cx="6.8" cy="7" r="1.6" fill="currentColor"/><rect x="5.4" y="9.7" width="2.8" height="8.6" fill="currentColor"/><path d="M10.4 9.7h2.7v1.2c.6-.9 1.6-1.4 2.8-1.4 2.4 0 3.5 1.5 3.5 4.1v4.7h-2.8v-4.2c0-1.2-.4-2-1.5-2s-1.9.8-1.9 2v4.2h-2.8z" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M13.6 21v-8.2h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.5 1.6-1.5H17V3.2c-.3 0-1.2-.1-2.3-.1-2.4 0-4 1.4-4 4.1v2.4H8v3.2h2.7V21z" fill="currentColor"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16.9" cy="7.2" r="1" fill="currentColor"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Andrei Rubic home"><img src="images/logo-ar.png" alt="" width="36" height="36"><span>Andrei Rubic</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#sample-work">Sample Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Real Estate Virtual Assistant</p>
+          <h1 id="hero-title">Hi,<br>I’m Andrei.</h1>
+          <p class="hero-lead">Detail-oriented Real Estate Virtual Assistant who builds systems and AI workflows, with experience in market research, lead calling, and scheduling.</p>
+          <p class="tagline">Thoughtful systems. Reliable execution.</p>
+          <div class="hero-actions">
+            <a class="btn btn-yellow" href="#sample-work">View sample work</a>
+            <a class="btn btn-outline" href="Andrei_Rubic_CV.pdf" download="Andrei_Rubic_CV.pdf">Download CV (PDF)</a>
+            <a class="btn btn-outline" href="#contact">Get in touch</a>
+          </div>
+          <p class="status">Available for remote work</p>
+        </div>
+        <div class="portrait"><span aria-hidden="true">AR</span><img src="images/profile.jpg" alt="Portrait of Andrei “Drei” Rubic" width="600" height="600" onerror="this.remove()"></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Career statistics">
+      <div class="container stats-grid">
+        <div class="stat"><span class="stat-icon"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span><strong>5–10</strong><span class="l">cities of market data</span></div>
+        <div class="stat"><span class="stat-icon"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span><strong>10–20</strong><span class="l">cold calls daily</span></div>
+        <div class="stat"><span class="stat-icon"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span><strong>15–20</strong><span class="l">rental occupants managed</span></div>
+        <div class="stat"><span class="stat-icon"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></span><strong>40+</strong><span class="l">five-star student reviews</span></div>
+      </div>
+    </section>
+
+    <section class="band band-ivory" id="about" aria-labelledby="about-title">
+      <div class="container split">
+        <div>
+          <p class="kicker">About</p>
+          <h2 id="about-title">My story</h2>
+        </div>
+        <div>
+          <p class="lead">I started as a tutor who ran a tight schedule, kept clean records, and sent parents weekly reports.</p>
+          <p class="muted">In real estate fieldwork, I turned those habits into market data, lead calls, and rental contracts across Rizal and Cavite.</p>
+          <p class="muted">Now I build simple systems and AI workflows so agents and small teams stay on top of follow-ups, records, and reports.</p>
+          <ul class="chips" aria-label="Work traits">
+            <li>Detail-oriented</li><li>Time-disciplined</li><li>Clear communicator</li><li>SOP-ready</li><li>Remote-friendly</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-yellow" id="featured-project" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="work-head">
+          <div>
+            <p class="kicker">Featured project</p>
+            <h2 id="featured-title">A system I built for real</h2>
+          </div>
+          <p>Beyond samples, I co-founded an online tutoring brand and architected the systems behind it. The same ideas (intake, tracking, and reporting) apply to real estate leads, listings, and rentals.</p>
+        </div>
+        <article class="feature">
+          <a class="feature-media" href="https://dreirubic.github.io/open-letter/landing-page/" target="_blank" rel="noopener" aria-label="Open the Learn With Open Letter landing page (opens in a new tab)">
+            <img src="images/open-letter-landing.jpg" alt="Landing page of Learn With Open Letter, a premium online tutoring brand in the Philippines" width="1000" height="542" loading="lazy">
+          </a>
+          <div class="feature-body">
+            <h3>Learn With Open Letter</h3>
+            <p class="role">Co-Founder, Managing Director &amp; Head of Growth Systems</p>
+            <ul>
+              <li>Co-founded a premium online tutoring brand in the Philippines with two co-founders.</li>
+              <li>Architected the product, AI systems, and infrastructure behind tutor tools, a parent dashboard, and internal data pipelines.</li>
+              <li>Designed around documented sessions and clear parent updates, the same discipline I bring to client work.</li>
+            </ul>
+            <div class="feature-actions">
+              <a class="btn btn-navy" href="https://dreirubic.github.io/open-letter/landing-page/" target="_blank" rel="noopener">View landing page</a>
+              <span class="pill">Currently paused</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="band band-navy" id="services" aria-labelledby="services-title">
+      <div class="container split">
+        <div>
+          <p class="kicker">Services</p>
+          <h2 id="services-title">What I can do for you</h2>
+        </div>
+        <div>
+          <div class="service"><h3>Calendar management</h3><p>Schedules that stay tight and on time, from site visits and call-backs to daily classes.</p></div>
+          <div class="service"><h3>Inbox management</h3><p>Clear, timely replies and tidy follow-ups across email and chat.</p></div>
+          <div class="service"><h3>Data entry and records</h3><p>Clean records in Excel and Word, from market data and rental contracts to attendance and payment audits.</p></div>
+          <div class="service"><h3>Lead follow-up</h3><p>Cold calls, inquiry handling, and follow-up trackers so no lead goes quiet.</p></div>
+          <div class="service"><h3>Reporting</h3><p>Clear summaries and dashboards: market data reports, client updates, and tracker snapshots.</p></div>
+          <a class="btn btn-yellow" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-ivory" id="experience" aria-labelledby="experience-title">
+      <div class="container split">
+        <div class="sticky">
+          <p class="kicker">Experience</p>
+          <h2 id="experience-title">Recent work, newest first</h2>
+          <p class="muted" style="margin-top:20px">A practical mix of education, fieldwork, sales, reporting, and client communication, built around consistency and follow-through.</p>
+        </div>
+        <div>
+          <article class="job">
+            <div class="job-date">Dec 2025 – Present</div>
+            <div>
+              <h3>ESL Tutor</h3>
+              <p class="org">Weblio</p>
+              <ul>
+                <li>Teach 5–8 students daily (100+ per month, 25–35 hours weekly) under a strict no-lateness, no-absence SOP.</li>
+                <li>Earned 40+ five-star reviews from Japanese clients through professional, time-disciplined sessions.</li>
+                <li>Use AI tools to prepare lesson content faster, tailored to each student's level.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div class="job-date">Sep 2023 – Feb 2024<br>Apr 2025 – Present</div>
+            <div>
+              <h3>Freelance Tutor</h3>
+              <p class="org">Online &amp; In-Person · Part-time</p>
+              <ul>
+                <li>Manage 5–8 students weekly, elementary to senior high school, with a separate lesson plan and materials for each.</li>
+                <li>Design interactive HTML reviewers and mock exams.</li>
+                <li>Send parents progress reports and audit attendance for 15th/30th payment cycles.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div class="job-date">Mar 2024 – Feb 2025</div>
+            <div>
+              <h3>Field Representative <span class="tag">Real Estate</span></h3>
+              <p class="org">Rizal &amp; Cavite</p>
+              <ul>
+                <li>Recorded market data across 5–10 cities in 2 provinces using Word, Excel, and Google Earth.</li>
+                <li>Led a team of 5–10 members per province on site visits, documentation, and owner coordination.</li>
+                <li>Cold called 10–20 sellers and buyers daily to handle inquiries.</li>
+                <li>Managed rental housing and contracts for 15–20 construction workers, before and after occupancy.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div class="job-date">Feb – Aug 2022</div>
+            <div>
+              <h3>Retail Sales &amp; Inventory Associate</h3>
+              <p class="org">Poultry Shop</p>
+              <ul>
+                <li>Served 50–70 customers daily, selling poultry products to pet and farm-animal owners.</li>
+                <li>Hit the PHP 5,000–8,000 daily sales target during my shifts.</li>
+                <li>Audited daily sales, restocked goods, and kept inventory organized.</li>
+              </ul>
+            </div>
+          </article>
+
+          <p class="subhead">Leadership &amp; projects</p>
+          <article class="job">
+            <div class="job-date">Jun 2026 – Present<br>Currently paused</div>
+            <div>
+              <h3>Co-Founder &amp; Managing Director</h3>
+              <p class="org">Learn With Open Letter</p>
+              <ul>
+                <li>Co-founded an online tutoring brand and led growth systems: product, AI systems, and infrastructure.</li>
+                <li>Built tutor tools, a parent dashboard, and internal data pipelines. <a class="inline" href="https://dreirubic.github.io/open-letter/landing-page/" target="_blank" rel="noopener">View the landing page</a>.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div class="job-date">Sep 2022 – Feb 2024</div>
+            <div>
+              <h3>Vocal Section Leader</h3>
+              <p class="org">Choir</p>
+              <ul><li>Guided a 5–7 member section, led daily warm-ups, and organized practice schedules for 10–20 performances.</li></ul>
+            </div>
+          </article>
+
+          <p class="subhead">Education &amp; certifications</p>
+          <div class="edu">
+            <article>
+              <h3>Education</h3>
+              <p><strong>Senior High School</strong><br>General Academic Strand · 2020–2022</p>
+            </article>
+            <article>
+              <h3>Certifications</h3>
+              <p>Real Estate Administrative Processes (completed)<br>EF SET C2 Proficient · 81/100 · Jun 2025<br>Claude 101 · Anthropic</p>
+            </article>
+          </div>
+          <ul class="certs" aria-label="Certificates (tap to view)">
+            <li><a class="cert" href="images/cert-efset-c2.jpg" target="_blank" rel="noopener" aria-label="View EF SET C2 certificate (opens in a new tab)"><img src="images/cert-efset-c2-thumb.jpg" alt="EF SET English certificate, C2 Proficient" width="520" height="479" loading="lazy"><span>EF SET C2 · English</span></a></li>
+            <li><a class="cert" href="images/cert-claude-101.jpg" target="_blank" rel="noopener" aria-label="View Claude 101 certificate (opens in a new tab)"><img src="images/cert-claude-101-thumb.jpg" alt="Claude 101 certificate of completion from Anthropic" width="520" height="394" loading="lazy"><span>Claude 101 · Anthropic</span></a></li>
+            <li><a class="cert" href="images/badge-real-estate-admin.png" target="_blank" rel="noopener" aria-label="View Real Estate Administrative Processes completion badge (opens in a new tab)"><img src="images/badge-real-estate-admin-thumb.png" alt="Course complete badge for Real Estate Administrative Processes" width="300" height="302" loading="lazy"><span>Real Estate Admin · Completed</span></a></li>
+          </ul>
+          <p class="cert-note">Tap a certificate to view it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-blue" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="work-head">
+          <div>
+            <p class="kicker">Reviews</p>
+            <h2 id="reviews-title">What students say</h2>
+          </div>
+          <p>Comments from students, translated and lightly edited for clarity. Names removed. Swipe or use the arrows to read more.</p>
+        </div>
+        <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Student reviews">
+          <div class="track" tabindex="0" aria-label="Student reviews, scrollable">
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“A warm, kind person who is easy to learn from.”</blockquote><figcaption>Student review</figcaption></figure>
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“I couldn’t speak English, but he patiently explained things until they made sense, and his calm reassurance made lessons easy to join.”</blockquote><figcaption>Student review</figcaption></figure>
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“A really good teacher.”</blockquote><figcaption>Student review</figcaption></figure>
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“Kind and friendly, with a real interest in Japanese food.”</blockquote><figcaption>Student review</figcaption></figure>
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“Kind, supportive teaching. I’m grateful for the lessons.”</blockquote><figcaption>Student review</figcaption></figure>
+            <figure class="review"><div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></div><blockquote>“Polite, gentle, and helpful.”</blockquote><figcaption>Student review</figcaption></figure>
+          </div>
+          <div class="car-controls">
+            <button type="button" class="car-btn" data-dir="-1" aria-label="Previous reviews">&larr;</button>
+            <button type="button" class="car-btn" data-dir="1" aria-label="Next reviews">&rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-yellow" id="sample-work" aria-labelledby="sample-title">
+      <div class="container">
+        <div class="work-head">
+          <div>
+            <p class="kicker">Sample work</p>
+            <h2 id="sample-title">A few things I’ve built</h2>
+          </div>
+          <p>Simple files and clear systems, built to show how I work. Trackers and reports use dummy data.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work flag">
+            <div>
+              <p class="flag-label">Featured</p>
+              <h3>Lead Tracker &amp; Call Kit</h3>
+              <p>A lead tracker with a dashboard and follow-up flags, plus a call script and three follow-up email templates.</p>
+              <a class="btn btn-navy" href="samples/sample-lead-tracker-call-kit.xlsx" download>Download sample</a>
+            </div>
+            <dl class="pst"><div><dt>Problem</dt><dd>Leads go cold when follow-ups slip.</dd></div><div><dt>Solution</dt><dd>Overdue and due-soon flags, a call script with objection handling, and ready-to-edit follow-up emails.</dd></div><div><dt>Tools</dt><dd>Excel or Google Sheets</dd></div></dl>
+          </article>
+          <article class="work">
+            <h3>Market Data Report</h3>
+            <p>A city-by-city summary with auto-calculated averages, a chart, and a 36-row listings log.</p>
+            <dl class="pst"><div><dt>Problem</dt><dd>Scattered listing notes are hard to compare.</dd></div><div><dt>Solution</dt><dd>One log that averages price per sqm by city, with a chart.</dd></div><div><dt>Tools</dt><dd>Excel</dd></div></dl>
+            <a class="btn btn-navy" href="samples/sample-market-data-report.xlsx" download>Download sample</a>
+          </article>
+          <article class="work">
+            <h3>Rental &amp; Contract Tracker</h3>
+            <p>A unit-by-unit tracker with contract and payment status flags, a dashboard, and move-in/move-out checkpoints.</p>
+            <dl class="pst"><div><dt>Problem</dt><dd>Contracts expire and rent dates get missed.</dd></div><div><dt>Solution</dt><dd>Status flags for contract end and payment due dates, plus a checklist.</dd></div><div><dt>Tools</dt><dd>Excel</dd></div></dl>
+            <a class="btn btn-navy" href="samples/sample-rental-contract-tracker.xlsx" download>Download sample</a>
+          </article>
+          <article class="work">
+            <h3>Automation Case Study</h3>
+            <p>How a reusable master prompt replaced random AI prompting and produces consistent, reliable interactive reviewers.</p>
+            <dl class="pst"><div><dt>Problem</dt><dd>Random prompts gave uneven results.</dd></div><div><dt>Solution</dt><dd>One master prompt with swappable blocks for grade, subject, and output type.</dd></div><div><dt>Tools</dt><dd>AI assistants, HTML</dd></div></dl>
+            <a class="btn btn-navy" href="samples/case-study-systematic-prompting.html" target="_blank" rel="noopener">Read case study</a>
+          </article>
+          <article class="work wide">
+            <h3>Interactive Lesson Materials</h3>
+            <p>A real interactive Grade 7 Science reviewer I built: lessons, practice problems, and a mini-test with answer checks.</p>
+            <dl class="pst"><div><dt>Problem</dt><dd>Students need self-paced practice.</dd></div><div><dt>Solution</dt><dd>An interactive reviewer that teaches, quizzes, and checks answers.</dd></div><div><dt>Tools</dt><dd>HTML, AI-assisted drafting</dd></div></dl>
+            <a class="btn btn-navy" href="samples/science-7-reviewer.html" target="_blank" rel="noopener">Open sample</a>
+          </article>
+          <article class="work wide">
+            <h3>30-Day Content Plan</h3>
+            <p>A 4-week content roadmap covering research, compliance checks, and tools, shown as an interactive one-page infographic.</p>
+            <dl class="pst"><div><dt>Problem</dt><dd>A launch needs a clear order of steps.</dd></div><div><dt>Solution</dt><dd>A 4-week roadmap with charts for each stage.</dd></div><div><dt>Tools</dt><dd>HTML, charts</dd></div></dl>
+            <a class="btn btn-navy" href="samples/youtube-content-plan.html" target="_blank" rel="noopener">Open sample</a>
+          </article>
+        </div>
+        <p class="note">Sample files use dummy data. No real client, student, or employer information is shown.</p>
+      </div>
+    </section>
+
+    <section class="band band-navy" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <p class="kicker">Skills</p>
+        <h2 id="skills-title">Tools for reliable remote support</h2>
+        <div class="skills-grid">
+          <div>
+            <h3>VA tasks</h3>
+            <ul class="chips"><li>Calendar management</li><li>Inbox management</li><li>Data entry</li><li>Lead follow-up</li><li>Reporting</li></ul>
+          </div>
+          <div>
+            <h3>AI &amp; Automation</h3>
+            <ul class="chips"><li>Prompt design</li><li>AI workflow automation</li><li>Claude</li><li>ChatGPT</li><li>Gemini</li><li>Perplexity</li><li>Kimi</li><li>Deepseek</li></ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul class="chips"><li>Google Workspace</li><li>MS Word</li><li>Excel</li><li>PowerPoint</li><li>Canva</li><li>Zoom</li><li>Google Meet</li><li>MS Teams</li><li>WhatsApp</li><li>Viber</li><li>BandLab</li><li>Video editing</li></ul>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <ul class="chips"><li>English (EF SET C2)</li><li>Tagalog</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-blue" id="contact" aria-labelledby="contact-title">
+      <div class="container split">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2 id="contact-title">Let’s work together.</h2>
+          <p class="contact-copy">If you need a dependable virtual assistant for research, lead support, scheduling, documentation, or reporting, send me a message and I’ll get back to you.</p>
+          <div class="contact-actions">
+            <a class="btn btn-navy" href="mailto:dreirubic@gmail.com?subject=Virtual%20Assistant%20Inquiry">Email Andrei</a>
+            <a class="btn btn-yellow" href="Andrei_Rubic_CV.pdf" download="Andrei_Rubic_CV.pdf">Download CV (PDF)</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <dl>
+            <div><dt>Email</dt><dd><a href="mailto:dreirubic@gmail.com">dreirubic@gmail.com</a><span class="mail-tools"><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=dreirubic@gmail.com&amp;su=Virtual%20Assistant%20Inquiry" target="_blank" rel="noopener">Open in Gmail</a><button type="button" id="copy-email">Copy email</button><span id="copy-status" role="status" aria-live="polite"></span></span></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/iamandreirubic" target="_blank" rel="noopener">linkedin.com/in/iamandreirubic</a></dd></div>
+            <div><dt>Location</dt><dd>San Jose Del Monte, Bulacan, Philippines</dd></div>
+            <div><dt>Focus</dt><dd>Real Estate VA Support</dd></div>
+          </dl>
+          <div class="socials" aria-label="Contact and social links">
+            <a class="soc" href="mailto:dreirubic@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+            <a class="soc" href="https://www.linkedin.com/in/iamandreirubic" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a class="soc" href="https://www.facebook.com/andreirubic" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            <a class="soc" href="https://www.instagram.com/andreirubic" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><strong>Email</strong> <a href="mailto:dreirubic@gmail.com">dreirubic@gmail.com</a></div>
+        <div><strong>Location</strong> Bulacan, Philippines</div>
+        <div class="footer-socials">
+          <a class="soc" href="mailto:dreirubic@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+          <a class="soc" href="https://www.linkedin.com/in/iamandreirubic" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a class="soc" href="https://www.facebook.com/andreirubic" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="soc" href="https://www.instagram.com/andreirubic" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+      <p class="copy">© 2026 Andrei “Drei” Rubic · Real Estate Virtual Assistant</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    const track = document.querySelector('.track');
+    document.querySelectorAll('.car-btn').forEach((b) => b.addEventListener('click', () => {
+      const card = track.querySelector('.review');
+      const step = card.getBoundingClientRect().width + 20;
+      const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: Number(b.dataset.dir) * step, behavior: calm ? 'auto' : 'smooth' });
+    }));
+    const copyBtn = document.getElementById('copy-email');
+    const copyStatus = document.getElementById('copy-status');
+    copyBtn.addEventListener('click', async () => {
+      const email = 'dreirubic@gmail.com';
+      try { await navigator.clipboard.writeText(email); copyStatus.textContent = 'Email copied'; }
+      catch (err) {
+        const t = document.createElement('textarea'); t.value = email; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); copyStatus.textContent = 'Email copied'; } catch (e2) { copyStatus.textContent = 'Copy failed. Please select the email text.'; }
+        t.remove();
+      }
+      setTimeout(() => { copyStatus.textContent = ''; }, 2500);
+    });
+    links.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      }
+    });
+  </script>
+</body>
+</html>
