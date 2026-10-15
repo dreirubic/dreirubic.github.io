@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Science 7 Reviewer — Matter & Doing Science</title>
+<style>
+  :root{
+    --paper:#F6F3E9; --ink:#1E2B26; --line:#C9C2A8;
+    --teal:#1B7A6E; --teal-dk:#125950; --amber:#C97A1A;
+    --good:#2F7D4F; --bad:#C0392B; --card:#FFFDF6;
+    box-sizing:border-box;
+  }
+  *{box-sizing:inherit;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Iowan Old Style',serif;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:26px 26px; background-attachment:local;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){--paper:#1B231F; --ink:#EDE7D6; --line:#33413A; --card:#222B26;}
+  }
+  :root[data-theme="dark"]{--paper:#1B231F; --ink:#EDE7D6; --line:#33413A; --card:#222B26;}
+
+  header{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    background:var(--teal-dk); color:#fff; padding:14px 18px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:'Trebuchet MS',sans-serif;
+  }
+  header h1{font-size:1.05rem; margin:0; font-weight:600;}
+  header p{margin:2px 0 0; font-size:.78rem; opacity:.85;}
+  nav.tabs{display:flex; gap:6px;}
+  nav.tabs button{
+    background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.35);
+    padding:7px 14px; border-radius:5px; font-family:'Trebuchet MS',sans-serif; font-size:.82rem;
+    cursor:pointer;
+  }
+  nav.tabs button.active{background:var(--amber); border-color:var(--amber); color:#231400;}
+
+  main{max-width:760px; margin:0 auto; padding:20px 18px 60px;}
+  .view{display:none;} .view.active{display:block;}
+
+  h2{font-size:1.3rem; border-bottom:2px solid var(--teal); padding-bottom:6px; margin-top:34px;}
+  h2:first-child{margin-top:6px;}
+  h3{font-family:'Trebuchet MS',sans-serif; font-size:.95rem; color:var(--teal-dk); margin-bottom:4px;}
+  :root[data-theme="dark"] h3{color:#7FC7BB;}
+  p, li{line-height:1.55; font-size:.98rem;}
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:14px 16px; margin:12px 0; box-shadow:2px 2px 0 var(--line);
+  }
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  @media (max-width:560px){.two-col{grid-template-columns:1fr;}}
+  .tag{
+    display:inline-block; font-family:'Trebuchet MS',sans-serif; font-size:.68rem;
+    padding:2px 8px; border-radius:10px; margin-bottom:6px; font-weight:600;
+  }
+  .tag.elem{background:#D9EFE9; color:var(--teal-dk);}
+  .tag.comp{background:#F5E3C6; color:#7A4A00;}
+  .tag.mix{background:#E6E1F0; color:#4A3A7A;}
+  :root[data-theme="dark"] .tag.elem{background:#173B34; color:#8FE0CE;}
+  :root[data-theme="dark"] .tag.comp{background:#3A2C0E; color:#F0C57E;}
+  :root[data-theme="dark"] .tag.mix{background:#2A2440; color:#C9BEEA;}
+
+  .ex-grid{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .chip{
+    font-size:.85rem; padding:6px 10px; border:1px solid var(--line); border-radius:5px;
+    background:var(--paper); cursor:default;
+  }
+
+  .qbox{margin:16px 0; padding:14px; border:1px solid var(--line); border-radius:6px; background:var(--card);}
+  .qbox p.prompt{font-weight:bold; margin-top:0;}
+  .opt{
+    display:block; width:100%; text-align:left; padding:9px 12px; margin:6px 0;
+    border:1px solid var(--line); border-radius:5px; background:var(--paper); color:var(--ink);
+    font-family:inherit; font-size:.92rem; cursor:pointer;
+  }
+  .opt:hover{border-color:var(--teal);}
+  .opt.correct{background:#DFF3E4; border-color:var(--good);}
+  .opt.wrong{background:#F8DDD8; border-color:var(--bad);}
+  :root[data-theme="dark"] .opt.correct{background:#1E3A28;}
+  :root[data-theme="dark"] .opt.wrong{background:#3A211D;}
+  .feedback{margin-top:10px; padding:9px 12px; border-radius:5px; font-size:.9rem; display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:#DFF3E4; color:#1D5C34;}
+  .feedback.bad{background:#F8DDD8; color:#7C271C;}
+  :root[data-theme="dark"] .feedback.good{background:#1E3A28; color:#B9E7C6;}
+  :root[data-theme="dark"] .feedback.bad{background:#3A211D; color:#F0BCB2;}
+
+  .calc{background:var(--card); border:1px dashed var(--teal); border-radius:6px; padding:12px 14px; margin:12px 0;}
+  .calc input{padding:6px 8px; font-size:.9rem; border:1px solid var(--line); border-radius:4px; width:110px; font-family:inherit;}
+  .calc button{margin-left:8px; padding:6px 12px; border:none; border-radius:4px; background:var(--teal); color:#fff; cursor:pointer; font-family:'Trebuchet MS',sans-serif;}
+
+  .testbar{
+    display:flex; justify-content:space-between; align-items:center; background:var(--card);
+    border:1px solid var(--line); border-radius:6px; padding:10px 14px; margin-bottom:14px; font-family:'Trebuchet MS',sans-serif;
+  }
+  #clock{font-weight:bold; color:var(--amber); font-size:1rem;}
+  #progress{font-size:.85rem; color:var(--ink); opacity:.8;}
+  .navbtns{display:flex; justify-content:space-between; margin-top:16px; gap:8px;}
+  .navbtns button{
+    flex:1; padding:10px; border:none; border-radius:5px; background:var(--teal); color:#fff;
+    font-family:'Trebuchet MS',sans-serif; cursor:pointer; font-size:.9rem;
+  }
+  .navbtns button:disabled{opacity:.4; cursor:not-allowed;}
+  .navbtns button.submit{background:var(--amber); color:#231400;}
+
+  .scorewrap{text-align:center; padding:20px 0;}
+  #scoreNum{font-size:2.6rem; font-weight:bold; color:var(--teal-dk); font-family:'Trebuchet MS',sans-serif;}
+  :root[data-theme="dark"] #scoreNum{color:#7FC7BB;}
+  .review{border-top:1px solid var(--line); padding-top:12px; margin-top:12px; text-align:left;}
+  .review .item{padding:10px 0; border-bottom:1px dotted var(--line);}
+  .review .item.right{color:var(--good);}
+  .review .item.wrong{color:var(--bad);}
+  .review .rat{color:var(--ink); opacity:.85; font-size:.88rem;}
+  footer{text-align:center; font-size:.78rem; opacity:.6; padding:10px; font-family:'Trebuchet MS',sans-serif;}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Science 7 Reviewer</h1>
+    <p>Doing Science • Pure Substances • Homogeneous Mixtures</p>
+  </div>
+  <nav class="tabs">
+    <button data-tab="learn" class="active">Learn</button>
+    <button data-tab="practice">Practice</button>
+    <button data-tab="test">Mini-Test</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ LEARN ============ -->
+<section id="learn" class="view active">
+
+  <h2>1. Understanding and Doing Science</h2>
+  <div class="card">
+    <p>Science is a way of asking questions about the world and answering them with <b>evidence</b>, not guesses. Doing science usually follows this cycle:</p>
+    <p><b>Observe</b> → notice something using your senses or tools (a liquid is cloudy, a rock feels heavy).<br>
+    <b>Measure</b> → describe it with numbers and units (volume in mL, mass in g).<br>
+    <b>Classify</b> → group it based on shared properties.<br>
+    <b>Investigate</b> → test an idea (hypothesis) through a fair experiment.<br>
+    <b>Conclude</b> → decide what the evidence shows, and be ready to revise if new evidence appears.</p>
+    <p style="margin-bottom:0"><i>Real-life example:</i> A student notices sugar "disappears" in water. She measures 10 g of sugar and 100 mL of water, stirs, and observes the mixture stays clear — this is an investigation, not just a guess.</p>
+  </div>
+  <div class="card">
+    <h3>Why measurement matters</h3>
+    <p style="margin-bottom:0">A good measurement always has a <b>number</b> and a <b>unit</b>. "The beaker has water" is an observation; "the beaker has 250 mL of water" is a measurement. Common Grade 7 lab units: mass (g, kg), volume (mL, L), length (cm, m), temperature (°C).</p>
+  </div>
+
+  <h2>2. Pure Substances vs. Mixtures</h2>
+  <div class="two-col">
+    <div class="card">
+      <h3>Pure Substance</h3>
+      <p>Made of only <b>one kind of matter</b>, with a fixed composition and fixed properties (constant melting/boiling point). Cannot be separated by simple physical means.</p>
+    </div>
+    <div class="card">
+      <h3>Mixture</h3>
+      <p>Made of <b>two or more substances</b> combined physically, in a composition that can vary. Can be separated by physical methods (filtering, evaporation, sifting).</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Elements vs. Compounds (both are pure substances)</h3>
+    <p><span class="tag elem">Element</span> the simplest pure substance — one type of atom only. Cannot be broken down further by ordinary chemical means. <i>Examples: oxygen (O₂), iron (Fe), gold (Au), carbon (C).</i></p>
+    <p style="margin-bottom:0"><span class="tag comp">Compound</span> two or more elements chemically combined in a fixed ratio, forming a new substance with new properties. Can only be broken apart by a chemical reaction. <i>Examples: water (H₂O), table salt (NaCl), carbon dioxide (CO₂).</i></p>
+  </div>
+
+  <h2>3. Homogeneous Mixtures / Solutions</h2>
+  <div class="card">
+    <p><span class="tag mix">Solution</span> a <b>homogeneous mixture</b> — its components are blended so evenly that you cannot see the separate parts, even under a normal microscope. One substance (the <b>solute</b>) dissolves in another (the <b>solvent</b>, usually the one in larger amount).</p>
+    <p style="margin-bottom:0"><i>Examples:</i> salt water (salt = solute, water = solvent), soft drinks, air (a solution of gases), vinegar, brewed tea without pulp.</p>
+  </div>
+
+  <h2>4. Quick Classification Check</h2>
+  <p>Tap a substance to reveal its correct classification and a one-line reason.</p>
+  <div class="ex-grid" id="chipGrid"></div>
+
+  <h2>5. Try the Numbers</h2>
+  <div class="calc">
+    <p style="margin-top:0"><b>Problem 1.</b> A student dissolves 15 g of salt in 135 g of water. What is the total mass of the salt solution? (Hint: mass is conserved when substances mix.)</p>
+    <input type="number" id="calc1" placeholder="grams">
+    <button onclick="checkCalc(1)">Check</button>
+    <p id="calc1fb" class="feedback"></p>
+  </div>
+  <div class="calc">
+    <p style="margin-top:0"><b>Problem 2.</b> A beaker holds 250 mL of a sugar solution. If 40 mL is pure sugar (solute) and the rest is water, how many mL of water (solvent) are present?</p>
+    <input type="number" id="calc2" placeholder="mL">
+    <button onclick="checkCalc(2)">Check</button>
+    <p id="calc2fb" class="feedback"></p>
+  </div>
+
+</section>
+
+<!-- ============ PRACTICE ============ -->
+<section id="practice" class="view">
+  <h2>Guided Practice</h2>
+  <p>Answer each item, then read the explanation before moving on.</p>
+  <div id="practiceWrap"></div>
+</section>
+
+<!-- ============ MINI-TEST ============ -->
+<section id="test" class="view">
+  <h2>Mixed Review Mini-Test</h2>
+  <div id="testIntro" class="card">
+    <p>10 questions covering all three topics: Doing Science, Pure Substances & Elements/Compounds, and Homogeneous Mixtures. You'll have <b>8 minutes</b>. Questions are shuffled each time you start.</p>
+    <button class="opt" style="background:var(--teal); color:#fff; text-align:center; font-weight:bold;" onclick="startTest()">Start Mini-Test</button>
+  </div>
+  <div id="testRun" style="display:none;">
+    <div class="testbar">
+      <span id="progress">Question 1 / 10</span>
+      <span id="clock">08:00</span>
+    </div>
+    <div id="testQuestion"></div>
+    <div class="navbtns">
+      <button id="prevBtn" onclick="navTest(-1)">← Back</button>
+      <button id="nextBtn" onclick="navTest(1)">Next →</button>
+      <button id="submitBtn" class="submit" style="display:none" onclick="finishTest()">Submit Test</button>
+    </div>
+  </div>
+  <div id="testResult" style="display:none;"></div>
+</section>
+
+</main>
+<footer>Science 7 • Understanding and Doing Science, Pure Substances & Homogeneous Mixtures</footer>
+
+<script>
+try{
+  var stored = localStorage.getItem('theme');
+  if(stored) document.documentElement.setAttribute('data-theme', stored);
+}catch(e){}
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.tab).classList.add('active');
+    window.scrollTo({top:0});
+  });
+});
+
+/* ---------- classification chips ---------- */
+const items = [
+  {name:'Oxygen gas (O₂)', type:'Element', reason:'One kind of atom only.', cls:'elem'},
+  {name:'Table salt (NaCl)', type:'Compound', reason:'Two elements chemically combined in a fixed ratio.', cls:'comp'},
+  {name:'Salt water', type:'Homogeneous mixture (solution)', reason:'Salt is evenly dissolved in water; composition can vary.', cls:'mix'},
+  {name:'Iron nail (Fe)', type:'Element', reason:'Pure metal made of one type of atom.', cls:'elem'},
+  {name:'Carbon dioxide (CO₂)', type:'Compound', reason:'Carbon and oxygen chemically bonded in a fixed ratio.', cls:'comp'},
+  {name:'Vinegar', type:'Homogeneous mixture (solution)', reason:'Acetic acid evenly dissolved in water.', cls:'mix'},
+  {name:'Air', type:'Homogeneous mixture (solution)', reason:'A blend of gases (mostly N₂ and O₂) evenly mixed.', cls:'mix'},
+  {name:'Pure gold (Au)', type:'Element', reason:'Only one kind of atom; cannot be broken down further.', cls:'elem'},
+];
+const grid = document.getElementById('chipGrid');
+items.forEach((it,i)=>{
+  const c = document.createElement('button');
+  c.className='chip'; c.textContent=it.name;
+  c.onclick = ()=>{
+    c.innerHTML = `<b>${it.name}</b> → <span class="tag ${it.cls}">${it.type}</span><br><small>${it.reason}</small>`;
+    c.style.maxWidth='260px';
+  };
+  grid.appendChild(c);
+});
+
+/* ---------- calculator problems ---------- */
+function checkCalc(n){
+  const val = parseFloat(document.getElementById('calc'+n).value);
+  const fb = document.getElementById('calc'+n+'fb');
+  fb.classList.add('show');
+  if(n===1){
+    if(val===150){ fb.className='feedback show good'; fb.textContent='Correct — 15 g + 135 g = 150 g. Mass is conserved when a solute dissolves in a solvent.'; }
+    else { fb.className='feedback show bad'; fb.textContent='Not quite. Add the mass of the solute (15 g) and solvent (135 g): 15 + 135 = 150 g.'; }
+  } else {
+    if(val===210){ fb.className='feedback show good'; fb.textContent='Correct — 250 mL total − 40 mL sugar = 210 mL of water.'; }
+    else { fb.className='feedback show bad'; fb.textContent='Not quite. Subtract the solute volume from the total: 250 − 40 = 210 mL.'; }
+  }
+}
+
+/* ---------- shared question bank ---------- */
+const bank = [
+  {q:'A student records that a liquid boils at exactly 100°C every trial. This liquid is most likely:', o:['A mixture','A pure substance','A solution','An observation'], a:1, r:'A constant boiling point is a property of a pure substance.'},
+  {q:'Which step comes right after "observe" in the doing-science cycle described in this reviewer?', o:['Conclude','Classify','Measure','Publish'], a:2, r:'After observing, scientists describe what they see using numbers and units — that\'s measuring.'},
+  {q:'Which is an example of an element?', o:['Water (H₂O)','Iron (Fe)','Salt water','Table salt (NaCl)'], a:1, r:'Iron is made of only one kind of atom, so it is an element.'},
+  {q:'Table salt (NaCl) is classified as a:', o:['Mixture','Element','Compound','Solution'], a:2, r:'NaCl is two elements (sodium and chlorine) chemically combined in a fixed ratio — a compound.'},
+  {q:'What makes a mixture different from a compound?', o:['A mixture has a fixed composition','A mixture can be separated by physical methods','A mixture is always a gas','A mixture cannot contain two substances'], a:1, r:'Mixtures combine substances physically, so they can be separated again by physical means like filtering.'},
+  {q:'In a sugar-water solution, sugar is the:', o:['Solvent','Solute','Element','Compound'], a:1, r:'The substance being dissolved (in smaller amount) is the solute; water is the solvent.'},
+  {q:'Which of these is a homogeneous mixture?', o:['Sand and water','Air','Oil and vinegar (unshaken)','Iron filings and sulfur powder'], a:1, r:'Air is a blend of gases mixed so evenly you cannot see separate parts — a solution.'},
+  {q:'A beaker contains 20 g of a solid dissolved completely in 180 g of liquid. What is the total mass of the solution?', o:['160 g','180 g','200 g','20 g'], a:2, r:'Mass is conserved: 20 g + 180 g = 200 g.'},
+  {q:'Which best describes a compound?', o:['One kind of atom only','Two or more elements chemically combined in a fixed ratio','Any substance you can see through','A mixture of two liquids'], a:1, r:'Compounds form when elements bond chemically in a fixed, unchanging ratio.'},
+  {q:'A recipe calls for measuring 250 mL of water using a graduated cylinder. This is an example of:', o:['A hypothesis','Classification','Measurement','A conclusion'], a:2, r:'Assigning a number and unit (250 mL) to an amount is measurement.'},
+  {q:'Which pair correctly matches solute and solvent in brewed, unsweetened tea (just tea leaves\' flavor compounds in water)?', o:['Solute = water, Solvent = flavor compounds','Solute = flavor compounds, Solvent = water','Both are solutes','Neither is a solute'], a:1, r:'Water is present in the larger amount, so it is the solvent; the dissolved flavor compounds are the solute.'},
+  {q:'Carbon dioxide (CO₂) cannot be separated back into carbon and oxygen by stirring or filtering because it is a:', o:['Mixture','Solution','Compound','Suspension'], a:2, r:'Compounds are chemically bonded, so only a chemical reaction — not a physical method — can break them apart.'},
+];
+
+/* ---------- practice section (first 5, static order, immediate feedback) ---------- */
+const practiceWrap = document.getElementById('practiceWrap');
+bank.slice(0,5).forEach((item,idx)=>{
+  const box = document.createElement('div'); box.className='qbox';
+  box.innerHTML = `<p class="prompt">${idx+1}. ${item.q}</p>`;
+  item.o.forEach((opt,oi)=>{
+    const btn = document.createElement('button'); btn.className='opt'; btn.textContent=opt;
+    btn.onclick = ()=>{
+      if(btn.classList.contains('locked')) return;
+      box.querySelectorAll('.opt').forEach(b=>b.classList.add('locked'));
+      if(oi===item.a) btn.classList.add('correct'); else { btn.classList.add('wrong'); box.querySelectorAll('.opt')[item.a].classList.add('correct'); }
+      const fb = box.querySelector('.feedback');
+      fb.classList.add('show', oi===item.a?'good':'bad');
+      fb.textContent = (oi===item.a?'Correct. ':'Not quite. ') + item.r;
+    };
+    box.appendChild(btn);
+  });
+  const fb = document.createElement('p'); fb.className='feedback'; box.appendChild(fb);
+  practiceWrap.appendChild(box);
+});
+
+/* ---------- mini-test engine ---------- */
+let testQs=[], curIdx=0, answers=[], timer=null, secsLeft=480;
+
+function shuffle(arr){ arr = arr.slice(); for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
+
+function startTest(){
+  testQs = shuffle(bank).slice(0,10);
+  answers = new Array(testQs.length).fill(null);
+  curIdx = 0; secsLeft = 480;
+  document.getElementById('testIntro').style.display='none';
+  document.getElementById('testRun').style.display='block';
+  document.getElementById('testResult').style.display='none';
+  renderQ();
+  clearInterval(timer);
+  timer = setInterval(()=>{
+    secsLeft--;
+    const m=String(Math.floor(secsLeft/60)).padStart(2,'0'), s=String(secsLeft%60).padStart(2,'0');
+    document.getElementById('clock').textContent = m+':'+s;
+    if(secsLeft<=0){ clearInterval(timer); finishTest(); }
+  },1000);
+}
+
+function renderQ(){
+  const item = testQs[curIdx];
+  document.getElementById('progress').textContent = `Question ${curIdx+1} / ${testQs.length}`;
+  const wrap = document.getElementById('testQuestion');
+  wrap.innerHTML = `<div class="qbox"><p class="prompt">${item.q}</p></div>`;
+  const box = wrap.querySelector('.qbox');
+  item.o.forEach((opt,oi)=>{
+    const btn = document.createElement('button'); btn.className='opt';
+    if(answers[curIdx]===oi) btn.style.borderColor='var(--teal)', btn.style.borderWidth='2px';
+    btn.textContent = opt;
+    btn.onclick = ()=>{ answers[curIdx]=oi; renderQ(); };
+    box.appendChild(btn);
+  });
+  document.getElementById('prevBtn').disabled = curIdx===0;
+  const last = curIdx===testQs.length-1;
+  document.getElementById('nextBtn').style.display = last?'none':'block';
+  document.getElementById('submitBtn').style.display = last?'block':'none';
+}
+
+function navTest(d){ curIdx += d; renderQ(); }
+
+function finishTest(){
+  clearInterval(timer);
+  document.getElementById('testRun').style.display='none';
+  const resWrap = document.getElementById('testResult');
+  resWrap.style.display='block';
+  let score=0;
+  let reviewHtml='';
+  testQs.forEach((item,i)=>{
+    const chosen = answers[i];
+    const correct = chosen===item.a;
+    if(correct) score++;
+    reviewHtml += `<div class="item ${correct?'right':'wrong'}">
+      <b>${i+1}. ${item.q}</b><br>
+      Your answer: ${chosen===null?'(no answer)':item.o[chosen]} ${correct?'✓':'— Correct answer: '+item.o[item.a]}
+      <div class="rat">${item.r}</div>
+    </div>`;
+  });
+  const pct = Math.round((score/testQs.length)*100);
+  let msg = pct>=80?'Great grasp of the topic!' : pct>=60?'Good effort — review the missed items below.' : 'Revisit the Learn tab, then try again.';
+  resWrap.innerHTML = `<div class="scorewrap card">
+    <div id="scoreNum">${score}/${testQs.length}</div>
+    <p>${pct}% — ${msg}</p>
+    <button class="opt" style="background:var(--teal); color:#fff; text-align:center; font-weight:bold; max-width:220px; margin:8px auto;" onclick="location.reload()">Retake Mini-Test</button>
+    <div class="review">${reviewHtml}</div>
+  </div>`;
+}
+</script>
+</body>
+</html>
